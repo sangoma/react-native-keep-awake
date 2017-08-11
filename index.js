@@ -4,6 +4,15 @@ import React, { Component } from 'react';
 import { NativeModules } from 'react-native';
 
 export default class KeepAwake extends Component {
+  
+  static activateAll() {
+    NativeModules.KCKeepAwake.activateAll();
+  }
+
+  static deactivateAll() {
+    NativeModules.KCKeepAwake.deactivateAll();
+  }
+
   static activate() {
     NativeModules.KCKeepAwake.activate();
   }
@@ -17,7 +26,7 @@ export default class KeepAwake extends Component {
   }
 
   componentWillUnmount() {
-    KeepAwake.deactivate();
+   KeepAwake.deactivate();
   }
 
   render() {

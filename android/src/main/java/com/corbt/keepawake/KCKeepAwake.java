@@ -5,10 +5,14 @@ package com.corbt.keepawake;
 
 import android.app.Activity;
 import android.view.WindowManager;
+import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 
 import com.facebook.react.bridge.ReactApplicationContext;
 import com.facebook.react.bridge.ReactContextBaseJavaModule;
 import com.facebook.react.bridge.ReactMethod;
+
 
 public class KCKeepAwake extends ReactContextBaseJavaModule {
 
@@ -16,9 +20,46 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
         super(reactContext);
     }
 
+    private static final String TAG = "KeepAwake";
+    
     @Override
     public String getName() {
         return "KCKeepAwake";
+    }
+    
+    @ReactMethod
+    public void activateAll() {
+        
+        //Use when React Native MainActivity is singleInstance android:launchMode="singleInstance"
+        final Context context = getReactApplicationContext();
+        
+        Log.d(TAG," activateAll start");
+        String packageName = context.getApplicationContext().getPackageName();
+        Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(packageName);
+
+        launchIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        // launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+     
+        context.startActivity(launchIntent);
+        Log.i(TAG, "starting Activity");
+    }
+    
+    @ReactMethod
+    public void deactivateAll() {
+        final Activity activity = getCurrentActivity();
+
+        if (activity != null) {
+            activity.runOnUiThread(new Runnable() {
+                @Override
+                public void run() {
+                    activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
+                    activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
+                    activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
+                    activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+                    Log.d(TAG, "All flags cleared");
+                }
+            });
+        }
     }
 
     @ReactMethod
