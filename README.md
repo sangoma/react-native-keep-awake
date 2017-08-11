@@ -97,10 +97,12 @@ In method 1, the screen will be locked awake when the `<KeepAwake />` component 
 
 ## Only for Android
 
-KeepAwake.activateAll();
+- `KeepAwake.activateAll();`
+
 Search for ReactNative MainActivity and execute startActivity with FLAG_ACTIVITY_BROUGHT_TO_FRONT
 
-KeepAwake.deactivateAll();
+- `KeepAwake.deactivateAll();`
+
 Clean Windows Flgs:  FLAG_KEEP_SCREEN_ON , FLAG_SHOW_WHEN_LOCKED , FLAG_TURN_SCREEN_ON , FLAG_DISMISS_KEYGUARD
 So window goes back if is in lockscreen
 
