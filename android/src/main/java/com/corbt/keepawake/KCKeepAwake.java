@@ -29,19 +29,18 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
     
     @ReactMethod
     public void activateAll() {
-        
+
         //Use when React Native MainActivity is singleInstance android:launchMode="singleInstance"
         final Context context = getReactApplicationContext();
         
-        Log.d(TAG," activateAll start");
+        Log.d(TAG,"*** activateAll start");
         String packageName = context.getApplicationContext().getPackageName();
         Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(packageName);
 
         launchIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
-        // launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-     
+        //launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         context.startActivity(launchIntent);
-        Log.i(TAG, "starting Activity");
     }
     
     @ReactMethod
@@ -56,7 +55,7 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
                     activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
                     activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
                     activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
-                    Log.d(TAG, "All flags cleared");
+                    Log.d(TAG, "*** All flags cleared");
                 }
             });
         }
