@@ -2,15 +2,20 @@
 
 import React, { Component } from 'react';
 import { NativeModules } from 'react-native';
+import { Platform } from 'react-native';
 
 export default class KeepAwake extends Component {
   
   static activateAll() {
-    NativeModules.KCKeepAwake.activateAll();
+    if (Platform.OS === 'android') {
+      NativeModules.KCKeepAwake.activateAll();
+    }
   }
 
   static deactivateAll() {
-    NativeModules.KCKeepAwake.deactivateAll();
+    if (Platform.OS === 'ios') {
+      NativeModules.KCKeepAwake.deactivateAll();
+    }
   }
 
   static activate() {
