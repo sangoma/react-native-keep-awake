@@ -6,16 +6,10 @@ import { NativeModules } from 'react-native';
 export default class KeepAwake extends Component {
   
   static activateAll() {
-    if (Platform.OS !== 'ios') {
-    return;
-  }
     NativeModules.KCKeepAwake.activateAll();
   }
 
   static deactivateAll() {
-    if (Platform.OS !== 'ios') {
-    return;
-  }
     NativeModules.KCKeepAwake.deactivateAll();
   }
 
@@ -28,11 +22,11 @@ export default class KeepAwake extends Component {
   }
 
   componentWillMount() {
-    KeepAwake.activate();
+    //KeepAwake.activate();
   }
 
   componentWillUnmount() {
-   KeepAwake.deactivate();
+   //KeepAwake.deactivate();
   }
 
   render() {
