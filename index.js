@@ -13,7 +13,7 @@ export default class KeepAwake extends Component {
   }
 
   static deactivateAll() {
-    if (Platform.OS === 'ios') {
+    if (Platform.OS === 'android') {
       NativeModules.KCKeepAwake.deactivateAll();
     }
   }
