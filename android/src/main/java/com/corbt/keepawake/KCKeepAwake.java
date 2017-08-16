@@ -39,6 +39,7 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
 
         launchIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         //launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
         context.startActivity(launchIntent);
     }
