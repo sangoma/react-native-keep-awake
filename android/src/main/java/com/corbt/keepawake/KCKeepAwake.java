@@ -56,6 +56,10 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
                     activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_SHOW_WHEN_LOCKED);
                     activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_TURN_SCREEN_ON);
                     activity.getWindow().clearFlags(android.view.WindowManager.LayoutParams.FLAG_DISMISS_KEYGUARD);
+                    activity.getWindow().getDecorView().setSystemUiVisibility(
+                                        View.SYSTEM_UI_FLAG_LAYOUT_STABLE);
+                                    //| View.SYSTEM_UI_FLAG_LAYOUT_HIDE_NAVIGATION
+                                    //| View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN);
                     Log.d(TAG, "*** All flags cleared");
                 }
             });
