@@ -38,7 +38,7 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
         String packageName = context.getApplicationContext().getPackageName();
         Intent launchIntent = context.getPackageManager().getLaunchIntentForPackage(packageName);
 
-        launchIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
+        //launchIntent.setFlags(Intent.FLAG_ACTIVITY_BROUGHT_TO_FRONT);
         //launchIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         launchIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 
