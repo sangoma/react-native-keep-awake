@@ -29,6 +29,28 @@ public class KCKeepAwake extends ReactContextBaseJavaModule {
     }
     
     @ReactMethod
+    public void isLockedScreen(Callback successCallBack){
+        Boolean status = false;
+        try {
+            final Context context = getReactApplicationContext();
+            //Detect if lock screen is on
+            KeyguardManager myKM = (KeyguardManager) context.getSystemService(Context.KEYGUARD_SERVICE);
+            if( myKM.inKeyguardRestrictedInputMode()) {
+                status = true;
+                Log.d(TAG,"*** ASK FOR LOCK SCREEN " + status);
+                successCallBack.invoke(status);
+            } else {
+                status = false;
+                Log.d(TAG,"*** ASK FOR LOCK SCREEN " + status);
+                successCallBack.invoke(status);
+            }
+
+        } catch (Exception e) {
+        }
+    }
+
+
+    @ReactMethod
     public void activateAll() {
 
         //Use when React Native MainActivity is singleInstance android:launchMode="singleInstance"
