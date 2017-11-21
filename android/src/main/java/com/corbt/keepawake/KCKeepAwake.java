@@ -3,6 +3,7 @@
 
 package com.corbt.keepawake;
 
+import android.app.KeyguardManager;
 import android.view.View;
 import android.app.Activity;
 import android.view.WindowManager;
