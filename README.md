@@ -1,15 +1,21 @@
 This React Native package allows you to prevent the screen from going to sleep while your app is active. It's useful for things like navigation or video playback, where the user expects the app to remain visible over long periods without touch interaction.
 
-## Compatible Versions
-
-**Note:** Due to a breaking change in React Native [0.40](https://github.com/facebook/react-native/releases/tag/v0.40.0), versions 2.0+ of this library is only compatible with RN >=0.40. For older versions of React Native, you'll need to install version 1.07.
-
 ## Installation
 
 As the first step, install this module:
 
+### React Native 0.57+
+
 ```
 npm install --save react-native-keep-awake
+```
+
+### React Native 0.56 and below
+
+v4 of this module targets gradle 3 syntax, which is not available by default for React Native v0.56 and below. If you are targeting an older version of React Native, stick to v3 of this module:
+
+```
+npm install --save react-native-keep-awake@3
 ```
 
 ### RNPM
@@ -17,7 +23,7 @@ npm install --save react-native-keep-awake
 The plugin can be installed using [react-native link](https://facebook.github.io/react-native/docs/linking-libraries-ios.html) on both iOS and Android. Once installed with npm, just run:
 
 ```
-react-native link
+react-native link react-native-keep-awake
 ```
 
 ### Manual install
